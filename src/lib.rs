@@ -2,7 +2,7 @@ use std::fs;
 use std::path::Path;
 
 pub mod days;
-use crate::days::day1::day1::{calculate_password, calculate_password2};
+use crate::days::{day1::day1::{calculate_password, calculate_password2}, day2::day2::add_invalid_ids};
 
 pub fn run(day: u32) {
     match day {
@@ -29,7 +29,12 @@ pub fn day1_soln() {
 }
 
 pub fn day2_soln() {
-    unimplemented!();
+    println!("Getting product ID ranges and adding invalid IDs!");
+    let input_path: &Path = Path::new("data/day2_input.txt");
+    let input: String = fs::read_to_string(input_path)
+                            .expect("Should have been able to readfile");
+    let sum_invalid: u64 = add_invalid_ids(&input);
+    println!("The solution is: {sum_invalid}");
 }
 
 pub fn day3_soln() {
